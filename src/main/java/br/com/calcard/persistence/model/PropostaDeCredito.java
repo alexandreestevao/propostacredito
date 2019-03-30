@@ -10,6 +10,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 import java.math.BigDecimal;
 
@@ -29,28 +30,28 @@ public class PropostaDeCredito implements Serializable {
     @NotEmpty(message = "CPF é obrigatório")
     private String cpf;
 
-    @NotEmpty(message = "Idade é obrigatório")
-    private int idade;
+    @NotNull(message = "Idade é obrigatório")
+    private Integer idade;
 
-    @NotEmpty(message = "Sexo é obrigatório")
+    @NotNull(message = "Sexo é obrigatório")
     private Integer sexo;
 
-    @NotEmpty(message = "Estado civil é obrigatório")
+    @NotNull(message = "Estado civil é obrigatório")
     private Integer estadoCivil;
 
-    @NotEmpty(message = "Estado é obrigatório")
+    @NotNull(message = "Estado é obrigatório")
     private Integer estado;
 
-    @NotEmpty(message = "Número de dependentes é obrigatório")
-    private int dependentes;
+    @NotNull(message = "Número de dependentes é obrigatório")
+    private Integer dependentes;
 
-    @NotEmpty(message = "Renda é obrigatório")
+    @NotNull(message = "Renda é obrigatório")
     private BigDecimal renda;
 
     public PropostaDeCredito() {
     }
 
-    public PropostaDeCredito(String nome, String cpf, int idade, Sexo sexo, EstadoCivil estadoCivil, Estados estado, int dependentes, BigDecimal renda) {
+    public PropostaDeCredito(String nome, String cpf, Integer idade, Sexo sexo, EstadoCivil estadoCivil, Estados estado, Integer dependentes, BigDecimal renda) {
         this.nome = nome;
         this.cpf = cpf;
         this.idade = idade;
@@ -89,7 +90,7 @@ public class PropostaDeCredito implements Serializable {
         return idade;
     }
 
-    public void setIdade(int idade) {
+    public void setIdade(Integer idade) {
         this.idade = idade;
     }
 
@@ -121,7 +122,7 @@ public class PropostaDeCredito implements Serializable {
         return dependentes;
     }
 
-    public void setDependentes(int dependentes) {
+    public void setDependentes(Integer dependentes) {
         this.dependentes = dependentes;
     }
 
