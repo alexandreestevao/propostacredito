@@ -3,7 +3,6 @@ package br.com.calcard.persistence.model;
 import br.com.calcard.persistence.model.enums.EstadoCivil;
 import br.com.calcard.persistence.model.enums.Estados;
 import br.com.calcard.persistence.model.enums.Sexo;
-import br.com.calcard.persistence.service.validation.PropostaDeCreditoInsert;
 import org.hibernate.validator.constraints.Length;
 
 import javax.persistence.Entity;
@@ -15,7 +14,6 @@ import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 import java.math.BigDecimal;
 
-@PropostaDeCreditoInsert
 @Entity
 public class PropostaDeCredito implements Serializable {
 

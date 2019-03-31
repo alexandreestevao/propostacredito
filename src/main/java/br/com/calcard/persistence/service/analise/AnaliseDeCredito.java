@@ -19,6 +19,8 @@ public class AnaliseDeCredito {
 
     public static PropostaDeCredito analiseDeCredito(PropostaDeCredito propostaDeCredito) {
 
+        propostaDeCredito.setResultado(true);
+
         String nome = propostaDeCredito.getNome();
         Integer idade = propostaDeCredito.getIdade();
         Sexo sexo = propostaDeCredito.getSexo();
@@ -27,68 +29,39 @@ public class AnaliseDeCredito {
         Integer dependentes = propostaDeCredito.getDependentes();
         BigDecimal rendaMensal = propostaDeCredito.getRenda();
 
-
-        final boolean b = idade >= 16 && rendaMensal.intValue() >= 501 && rendaMensal.intValue() <= 1000 &&
-                dependentes.equals(0);
-        final boolean b1 = idade >= 16 && rendaMensal.intValue() >= 1001 && rendaMensal.intValue() <= 2500 &&
-                dependentes.equals(0);
-        final boolean b2 = idade >= 16 && rendaMensal.intValue() >= 1001 && rendaMensal.intValue() <= 2500 &&
-                dependentes >= 1 && dependentes < 3;
-        final boolean b3 = idade >= 16 && rendaMensal.intValue() >= 2501 && rendaMensal.intValue() <= 5000 &&
-                dependentes >= 1 && dependentes <= 3;
-        final boolean b4 = idade >= 16 && rendaMensal.intValue() >= 5001 && rendaMensal.intValue() <= 8000 &&
-                dependentes >= 1 && dependentes <= 3;
-        final boolean b5 = idade >= 16 && rendaMensal.intValue() >= 5001 && rendaMensal.intValue() <= 8000 &&
-                dependentes >= 4 && dependentes < 6;
-        final boolean b6 = idade >= 16 && rendaMensal.intValue() >= 5001 && rendaMensal.intValue() <= 8000 &&
-                dependentes == 3;
-        final boolean b7 = idade >= 16 && rendaMensal.intValue() >= 8001 && rendaMensal.intValue() <= 10000 &&
-                dependentes <= 1;
-        final boolean b8 = rendaMensal.intValue() <= 500;
-        final boolean b9 = idade >= 45 && rendaMensal.intValue() >= 1000 && rendaMensal.intValue() <= 2000 &&
-                dependentes >= 1 && dependentes < 3 && (estadoCivil == EstadoCivil.DIVORCIADO ||
-                estadoCivil == EstadoCivil.VIÚVO);
-
-        if (b) {
-            propostaDeCredito.setResultado(true);
+        if (idade >= 16 && rendaMensal.intValue() >= 501 && rendaMensal.intValue() <= 1000 &&
+                dependentes.equals(0)) {
             propostaDeCredito.setLimiteDeCredito(ENTRE_100_500);
             return propostaDeCredito;
-        } else if (b1) {
-            propostaDeCredito.setResultado(true);
+        } else if (idade >= 16 && rendaMensal.intValue() >= 1001 && rendaMensal.intValue() <= 2500 &&
+                dependentes.equals(0)) {
             propostaDeCredito.setLimiteDeCredito(ENTRE_500_1000);
-            return propostaDeCredito;
-        } else if (b2) {
-            propostaDeCredito.setResultado(true);
+        } else if (idade >= 16 && rendaMensal.intValue() >= 1001 && rendaMensal.intValue() <= 2500 &&
+                dependentes >= 1 && dependentes < 3) {
             propostaDeCredito.setLimiteDeCredito(ENTRE_100_500);
-            return propostaDeCredito;
-        } else if (b3) {
-            propostaDeCredito.setResultado(true);
+        } else if (idade >= 16 && rendaMensal.intValue() >= 2501 && rendaMensal.intValue() <= 5000 &&
+                dependentes >= 1 && dependentes <= 3) {
             propostaDeCredito.setLimiteDeCredito(ENTRE_1000_1500);
-            return propostaDeCredito;
-        } else if (b4) {
-            propostaDeCredito.setResultado(true);
+        } else if (idade >= 16 && rendaMensal.intValue() >= 5001 && rendaMensal.intValue() <= 8000 &&
+                dependentes <= 1 && dependentes <= 3) {
             propostaDeCredito.setLimiteDeCredito(SUPERIOR_2000);
-            return propostaDeCredito;
-        } else if (b5) {
-            propostaDeCredito.setResultado(true);
+        } else if (idade >= 16 && rendaMensal.intValue() >= 5001 && rendaMensal.intValue() <= 8000 &&
+                dependentes >= 4 && dependentes < 6) {
             propostaDeCredito.setLimiteDeCredito(ENTRE_1000_1500);
-            return propostaDeCredito;
-        } else if (b6) {
-            propostaDeCredito.setResultado(true);
+        } else if (idade >= 16 && rendaMensal.intValue() >= 5001 && rendaMensal.intValue() <= 8000 &&
+                dependentes == 3) {
             propostaDeCredito.setLimiteDeCredito(ENTRE_1500_2000);
-            return propostaDeCredito;
-        } else if (b7) {
-            propostaDeCredito.setResultado(true);
+        } else if (idade >= 16 && rendaMensal.intValue() >= 8001 && rendaMensal.intValue() <= 10000 &&
+                dependentes <= 1) {
             propostaDeCredito.setLimiteDeCredito(SUPERIOR_2000);
-            return propostaDeCredito;
-        } else if (b8) {
+        } else if (rendaMensal.intValue() <= 500) {
             propostaDeCredito.setResultado(false);
             propostaDeCredito.setLimiteDeCredito(RENDA_BAIXA);
-            return propostaDeCredito;
-        } else if (b9) {
+        } else if (idade >= 16 && rendaMensal.intValue() >= 1000 && rendaMensal.intValue() <= 2000 &&
+                dependentes >= 1 && dependentes < 3 && (estadoCivil == EstadoCivil.DIVORCIADO ||
+                estadoCivil == EstadoCivil.VIÚVO)) {
             propostaDeCredito.setResultado(false);
             propostaDeCredito.setLimiteDeCredito(REPROVADO_PELA_POLITICA_DE_CREDITO);
-            return propostaDeCredito;
         }
 
         return propostaDeCredito;
