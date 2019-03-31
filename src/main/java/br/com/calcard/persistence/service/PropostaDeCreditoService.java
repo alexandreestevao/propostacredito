@@ -1,9 +1,6 @@
 package br.com.calcard.persistence.service;
 
 import br.com.calcard.persistence.model.PropostaDeCredito;
-import br.com.calcard.persistence.model.enums.EstadoCivil;
-import br.com.calcard.persistence.model.enums.Estados;
-import br.com.calcard.persistence.model.enums.Sexo;
 import br.com.calcard.persistence.repository.PropostaDeCreditoRepository;
 import br.com.calcard.persistence.service.analise.AnaliseDeCredito;
 import br.com.calcard.persistence.service.exceptions.DataIntegrityException;
@@ -12,7 +9,6 @@ import br.com.calcard.persistence.service.interfaces.PropostaDeCreditoInterface;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.math.BigDecimal;
 import java.util.List;
 import java.util.Optional;
 
