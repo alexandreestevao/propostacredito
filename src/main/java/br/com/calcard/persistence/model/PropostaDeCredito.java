@@ -48,6 +48,9 @@ public class PropostaDeCredito implements Serializable {
     @NotNull(message = "Renda é obrigatório")
     private BigDecimal renda;
 
+    private Boolean resultado;
+    private String limiteDeCredito;
+
     public PropostaDeCredito() {
     }
 
@@ -134,6 +137,22 @@ public class PropostaDeCredito implements Serializable {
         this.renda = renda;
     }
 
+    public Boolean getResultado() {
+        return resultado;
+    }
+
+    public void setResultado(Boolean resultado) {
+        this.resultado = resultado;
+    }
+
+    public String getLimiteDeCredito() {
+        return limiteDeCredito;
+    }
+
+    public void setLimiteDeCredito(String limeteDeCredito) {
+        this.limiteDeCredito = limeteDeCredito;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -161,6 +180,8 @@ public class PropostaDeCredito implements Serializable {
                 ", estado=" + estado +
                 ", dependentes=" + dependentes +
                 ", renda=" + renda +
+                ", resultado=" + resultado +
+                ", limiteDeCredito=" + limiteDeCredito +
                 '}';
     }
 }

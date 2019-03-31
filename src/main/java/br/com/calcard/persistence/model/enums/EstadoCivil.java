@@ -8,7 +8,7 @@ public enum EstadoCivil {
     SOLTEIRO(4, "Solteiro(a)"),
     VIÚVO(5, "Viúvo(a)");
 
-    private int codigo;
+    private Integer codigo;
     private String nome;
 
     EstadoCivil(Integer id, String nome) {
