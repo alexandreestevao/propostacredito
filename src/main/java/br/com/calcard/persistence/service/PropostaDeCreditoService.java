@@ -5,6 +5,7 @@ import br.com.calcard.persistence.repository.PropostaDeCreditoRepository;
 import br.com.calcard.persistence.service.analise.AnaliseDeCredito;
 import br.com.calcard.persistence.service.exceptions.DataIntegrityException;
 import br.com.calcard.persistence.service.exceptions.ObjectNotFoundException;
+import br.com.calcard.persistence.service.exceptions.UnicidadeCpfException;
 import br.com.calcard.persistence.service.interfaces.PropostaDeCreditoInterface;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -15,8 +16,13 @@ import java.util.Optional;
 @Service
 public class PropostaDeCreditoService implements PropostaDeCreditoInterface {
 
+
+    private PropostaDeCreditoRepository propostaDeCreditoRepository;
+
     @Autowired
-    PropostaDeCreditoRepository propostaDeCreditoRepository;
+    PropostaDeCreditoService(PropostaDeCreditoRepository propostaDeCreditoRepository) {
+        this.propostaDeCreditoRepository = propostaDeCreditoRepository;
+    }
 
     public List<PropostaDeCredito> buscaTodos() {
         List<PropostaDeCredito> resultado = propostaDeCreditoRepository.buscaTodos();
@@ -35,10 +41,18 @@ public class PropostaDeCreditoService implements PropostaDeCreditoInterface {
     }
 
     @Override
-    public PropostaDeCredito salvar(PropostaDeCredito propostaDeCredito) throws DataIntegrityException {
+    public PropostaDeCredito salvar(PropostaDeCredito propostaDeCredito) throws DataIntegrityException, UnicidadeCpfException {
+
+        Optional<PropostaDeCredito> proposta = propostaDeCreditoRepository.findByCpf(propostaDeCredito.getCpf());
+
+        if (proposta.isPresent()) {
+            throw new UnicidadeCpfException("Já existe proposta cadastrada com o CPF '"+ propostaDeCredito.getCpf() +"'");
+        }
+
         AnaliseDeCredito.analiseDeCredito(propostaDeCredito);
         propostaDeCredito.setId(null);
         return propostaDeCreditoRepository.save(propostaDeCredito);
+
     }
 
 }

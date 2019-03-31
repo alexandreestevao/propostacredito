@@ -2,6 +2,7 @@ package br.com.calcard.controller;
 
 import br.com.calcard.persistence.model.PropostaDeCredito;
 import br.com.calcard.persistence.service.PropostaDeCreditoService;
+import br.com.calcard.persistence.service.exceptions.UnicidadeCpfException;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -33,7 +34,7 @@ public class PropostaDeCreditoController {
 
     @ApiOperation(value="Registra analise de crédito no banco de dados.")
     @PostMapping
-    public ResponseEntity<?> insert(@Valid @RequestBody PropostaDeCredito propostaDeCredito) {
+    public ResponseEntity<?> insert(@Valid @RequestBody PropostaDeCredito propostaDeCredito) throws UnicidadeCpfException {
         propostaDeCredito = this.propostaDeCreditoService.salvar(propostaDeCredito);
         URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{cpf}").buildAndExpand(propostaDeCredito.getCpf()).toUri();
         return ResponseEntity.created(uri).build();

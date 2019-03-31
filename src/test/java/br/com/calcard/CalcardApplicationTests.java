@@ -1,4 +1,4 @@
-package br.com.analisedecredito.calcard;
+package br.com.calcard;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
