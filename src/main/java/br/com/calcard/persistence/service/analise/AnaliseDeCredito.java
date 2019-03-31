@@ -15,7 +15,7 @@ public class AnaliseDeCredito {
     public static final String SUPERIOR_2000 = "Superior 2000";
     public static final String ENTRE_1500_2000 = "Entre 1500 - 2000";
     public static final String RENDA_BAIXA = "Renda baixa";
-    public static final String REPROVADO_PELA_POLÍTICA_DE_CRÉDITO = "Reprovado pela política de crédito";
+    public static final String REPROVADO_PELA_POLITICA_DE_CREDITO = "Reprovado pela política de crédito";
 
     public static PropostaDeCredito analiseDeCredito(PropostaDeCredito propostaDeCredito) {
 
@@ -87,7 +87,7 @@ public class AnaliseDeCredito {
             return propostaDeCredito;
         } else if (b9) {
             propostaDeCredito.setResultado(false);
-            propostaDeCredito.setLimiteDeCredito(REPROVADO_PELA_POLÍTICA_DE_CRÉDITO);
+            propostaDeCredito.setLimiteDeCredito(REPROVADO_PELA_POLITICA_DE_CREDITO);
             return propostaDeCredito;
         }
 
