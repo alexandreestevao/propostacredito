@@ -1,6 +1,6 @@
 # spring-boot-docker
 
-[Executando aplicações Spring Boot no Docker](https://wp.me/p5RSbg-fO)
+Executando aplicações Spring Boot no Docker
 
 ## Pré requisito
 - Maven 3
@@ -12,41 +12,25 @@
 
 ```
 mvn clean package dockerfile:build 
-```
-
-## Executando
-
-Executando container do Postgres
-```
-docker run -it \    
-    --name docker-postgres \    
-    -e POSTGRES_DB=db \   
-    -e POSTGRES_USER=postgres \   
-    -e POSTGRES_PASSWORD=postgres  
-    postgres:10.4
-```
-
-Executando container da aplicação
-```
-docker run -it     
-   --link docker-postgres     
-   -p 8080:8080    
-   emmanuelneri/spring-boot-docker-app
-```
-
-```
-CONTAINER ID        IMAGE                                 COMMAND                  CREATED             STATUS              PORTS                    NAMES
-3b7f0cfeceaf        emmanuelneri/spring-boot-docker-app   "java -Djava.securit…"   8 minutes ago       Up 7 seconds        0.0.0.0:8080->8080/tcp   springbootdocker_docker-app_1
-7f01ce21cb11        postgres:10.4                         "docker-entrypoint.s…"   8 minutes ago       Up 7 seconds        5432/tcp                 springbootdocker_docker-postgres_1
-```
-
-## Executando com Docker Compose
-
-```
 docker-compose up
 ```
 
-## Acessando 
+## Documentação Swagger
 
-- http://localhost:8080/db/pool/name
-- http://localhost:8080/db/pool/size
+```
+http://localhost:8080/swagger-ui.html#/
+```
+
+## Frontend
+
+```
+Instalar http-server para rodar aplicação
+Ubuntu:  npm install http-server -g
+Depois basta iniciar: http-server
+
+```
+
+```
+Se levantar o banckend primeiro, ele assumirá a porta 808
+Fique atento na porta que o frontend levanrará, se a 8080 estiver ocupada ele assume a 8081
+```
