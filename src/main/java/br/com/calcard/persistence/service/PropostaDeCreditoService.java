@@ -16,7 +16,6 @@ import java.util.Optional;
 @Service
 public class PropostaDeCreditoService implements PropostaDeCreditoInterface {
 
-
     private PropostaDeCreditoRepository propostaDeCreditoRepository;
 
     @Autowired
@@ -49,8 +48,8 @@ public class PropostaDeCreditoService implements PropostaDeCreditoInterface {
             throw new UnicidadeCpfException("Já existe proposta cadastrada com o CPF '"+ propostaDeCredito.getCpf() +"'");
         }
 
-        AnaliseDeCredito.analiseDeCredito(propostaDeCredito);
         propostaDeCredito.setId(null);
+        AnaliseDeCredito.analiseDeCredito(propostaDeCredito);
         return propostaDeCreditoRepository.save(propostaDeCredito);
 
     }
