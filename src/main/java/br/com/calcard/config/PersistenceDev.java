@@ -20,7 +20,7 @@ public class PersistenceDev {
         dataSource.setDriverClassName("org.postgresql.Driver");
         dataSource.setUrl("jdbc:postgresql://localhost:5432/calcard");
         dataSource.setUsername("postgres");
-        dataSource.setPassword("legalizzr");
+        dataSource.setPassword("r2d2c3po");
         return dataSource;
     }
 
